@@ -29,7 +29,7 @@ pipeline {
             post{
                 success{
                     print "[INFO] ========== pass run test stage =========="
-                    setBuildStatus("Build failed", "FAILURE", "${StepName}");
+                    setBuildStatus("Build failed", "SUCCESS", "${StepName}");
                 }
                 failure{
                     print "[INFO] ========== fail to pass run test stage =========="
