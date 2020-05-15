@@ -9,6 +9,8 @@ pipeline {
                 script{
                     StepName = "Install Package"
                     print "[STAGE] ========== ${StepName} =========="
+
+                    echo 123
                     
                 }
             }
@@ -26,8 +28,8 @@ pipeline {
         stage('--run-test--') {
             steps {
                 script{
-                    print "[STAGE] ========== run test =========="
                     StepName = "Run Test"
+                    print "[STAGE] ========== ${StepName} =========="
                 }
             }
             post{
