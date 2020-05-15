@@ -9,7 +9,7 @@ pipeline {
                 script{
                     StepName = "Install Package"
                     print "[STAGE] ========== ${StepName} =========="
-                    docker ps           
+                    pwd        
                 }
             }
             post{
