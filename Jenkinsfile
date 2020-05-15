@@ -13,6 +13,7 @@ pipeline {
                     bat "docker run --name server1 -d -p 32781:22 -P chusiang/ansible-managed-node:ubuntu-14.04"
                     bat "docker run --name server2 -d -p 32782:22 -P chusiang/ansible-managed-node:ubuntu-14.04"
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ls ansible\""
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"cat ansible/ansible.cfg""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ansible --version\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"docker ps\""    
                     bat "D:\\cygwin64\\bin\\bash --login -c \"cd ansible && ansible all -m command -a \'echo Hello World on Docker.\'\""  
