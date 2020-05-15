@@ -9,7 +9,8 @@ pipeline {
                 script{
                     StepName = "Install Package"
                     print "[STAGE] ========== ${StepName} =========="
-                    sh pwd       
+                    D:\cygwin64\bin\bash --login -c "ansible --version"
+                    D:\cygwin64\bin\bash --login -c "docker ps"    
                 }
             }
             post{
