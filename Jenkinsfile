@@ -17,6 +17,10 @@ pipeline {
                     print "[INFO] ========== fail to pass install package stage =========="
                     setBuildStatus("Build failed", "FAILURE", "${StepName}");
                 }
+                unstable{
+                    print "[INFO] ========== prcessing install package stage =========="
+                    setBuildStatus("Build failed", "UNSTABLE", "${StepName}");
+                }
             }
         }
         stage('--run-test--') {
@@ -34,6 +38,10 @@ pipeline {
                 failure{
                     print "[INFO] ========== fail to pass run test stage =========="
                     setBuildStatus("Build failed", "FAILURE", "${StepName}");
+                }
+                unstable{
+                    print "[INFO] ========== prcessing run test stage =========="
+                    setBuildStatus("Build failed", "UNSTABLE", "${StepName}");
                 }
             }
         }
