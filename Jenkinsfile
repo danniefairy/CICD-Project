@@ -10,7 +10,7 @@ pipeline {
                     StepName = "Install Package"
                     print "[STAGE] ========== ${StepName} =========="
 
-                    docker ps
+                    bat "docker ps"
                     
                 }
             }
