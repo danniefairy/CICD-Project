@@ -14,7 +14,7 @@ pipeline {
                     bat "docker run --name server2 -d -p 32782:22 -P chusiang/ansible-managed-node:ubuntu-14.04"
                     bat "dir"
                     bat "dir ansible"
-                    bat "xcopy ansible d:\\cygwin64\\home\\user\\ansible /i /y"
+                    bat "xcopy ansible d:\\cygwin64\\home\\user\\ansible /i /o /y"
 
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ls ansible \""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"cat ansible/ansible.cfg\""
