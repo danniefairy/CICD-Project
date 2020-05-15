@@ -1,25 +1,25 @@
 pipeline {
     agent any
+    options {
+        timeout(time: 1, unit: 'HOURS') 
+    }
     stages {
         stage('--install-package--') {
             steps {
                 script{
-                    print "[STAGE] ========== install package =========="
                     StepName = "Install Package"
+                    print "[STAGE] ========== ${StepName} =========="
+                    
                 }
             }
             post{
                 success{
-                    print "[INFO] ========== pass install package stage =========="
+                    print "[INFO] ========== ${StepName} successed =========="
                     setBuildStatus("Build succeeded", "SUCCESS", "${StepName}");
                 }
                 failure{
-                    print "[INFO] ========== fail to pass install package stage =========="
+                    print "[INFO] ========== ${StepName} failed =========="
                     setBuildStatus("Build failed", "FAILURE", "${StepName}");
-                }
-                always{
-                    print "[INFO] ========== prcessing install package stage =========="
-                    setBuildStatus("Build failed", "ALWAYS", "${StepName}");
                 }
             }
         }
@@ -32,16 +32,12 @@ pipeline {
             }
             post{
                 success{
-                    print "[INFO] ========== pass run test stage =========="
-                    setBuildStatus("Build failed", "SUCCESS", "${StepName}");
+                    print "[INFO] ========== ${StepName} successed =========="
+                    setBuildStatus("Build succeeded", "SUCCESS", "${StepName}");
                 }
                 failure{
-                    print "[INFO] ========== fail to pass run test stage =========="
+                    print "[INFO] ========== ${StepName} failed =========="
                     setBuildStatus("Build failed", "FAILURE", "${StepName}");
-                }
-                always{
-                    print "[INFO] ========== prcessing run test stage =========="
-                    setBuildStatus("Build failed", "ALWAYS", "${StepName}");
                 }
             }
         }
