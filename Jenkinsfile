@@ -9,9 +9,7 @@ pipeline {
                 script{
                     StepName = "Install Package"
                     print "[STAGE] ========== ${StepName} =========="
-
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"pwd\"" 
-                    
+                    bat "D:\\cygwin64\\bin\\bash --login -c \" pwd \"" 
                 }
             }
             post{
