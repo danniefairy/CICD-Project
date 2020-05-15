@@ -9,9 +9,13 @@ pipeline {
                 script{
                     StepName = "Install Package"
                     print "[STAGE] ========== ${StepName} =========="
+                    bat "docker run --name server1 -d -P chusiang/ansible-managed-node:ubuntu-14.04"
+                    bat "docker run --name server2 -d -P chusiang/ansible-managed-node:ubuntu-14.04"
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ls ansible\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ansible --version\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"docker ps\""    
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"ansible all -m command -a \'echo Hello World on Docker.\'\""  
+                    
                 }
             }
             post{
