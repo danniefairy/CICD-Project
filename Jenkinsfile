@@ -41,7 +41,7 @@ pipeline {
 void setBuildStatus(String message, String state, String taskTitle) {
   step([
       $class: "GitHubCommitStatusSetter",
-      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/danniefairy/hook-example"],
+      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/danniefairy/CICD-Project"],
       contextSource: [$class: "ManuallyEnteredCommitContextSource", context: taskTitle],
       errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
       statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
