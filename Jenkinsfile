@@ -10,7 +10,7 @@ pipeline {
                     StepName = "Install Package"
                     print "[STAGE] ========== ${StepName} =========="
                     bat "dir"
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"ls\""
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"ls ansible\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ansible --version\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"docker ps\""    
                 }
