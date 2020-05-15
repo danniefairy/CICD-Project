@@ -1,5 +1,5 @@
-server1  ansible_ssh_host=localhost  ansible_ssh_port=32781 ansible_ssh_pass=docker
-server2  ansible_ssh_host=localhost  ansible_ssh_port=32782 ansible_ssh_pass=docker
+server1  ansible_ssh_host=127.0.0.1  ansible_ssh_port=32781 ansible_ssh_pass=docker
+server2  ansible_ssh_host=127.0.0.1  ansible_ssh_port=32782 ansible_ssh_pass=docker
 
 [local]
 server1
