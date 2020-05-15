@@ -9,9 +9,8 @@ pipeline {
                 script{
                     StepName = "Install Package"
                     print "[STAGE] ========== ${StepName} =========="
-
-                    docker ps
-                    
+                    bat "D:\\cygwin64\\bin\\mintty.exe -i /Cygwin-Terminal.ico -" 
+                    docker ps           
                 }
             }
             post{
