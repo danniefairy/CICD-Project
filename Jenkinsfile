@@ -9,10 +9,11 @@ pipeline {
                 script{
                     StepName = "Install Package"
                     print "[STAGE] ========== ${StepName} =========="
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"docker rm -f server1 server2\"" 
+                    bat "docker rm -f server1 server2" 
                     bat "docker run --name server1 -d -p 32781:22 -P chusiang/ansible-managed-node:ubuntu-14.04"
                     bat "docker run --name server2 -d -p 32782:22 -P chusiang/ansible-managed-node:ubuntu-14.04"
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"pwd\""
+                    bat "xcopy ./ansible d:\\cygwin64\\home\\user\\ansible  /s /e /h"
+
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ls ansible \""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"cat ansible/ansible.cfg\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ansible --version\""
