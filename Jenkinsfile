@@ -17,11 +17,11 @@ pipeline {
                     bat "xcopy ansible d:\\cygwin64\\home\\user\\ansible /i /o /y"
 
                     bat "D:\\cygwin64\\bin\\bash --login -c \"pwd\""
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"ls ansible\""
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"cat ansible/ansible.cfg\""
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ../user && ls ansible\""
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ../user && cat ansible/ansible.cfg\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ansible --version\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"docker ps\""    
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ansible && ansible all -m command -a \'echo Hello World on Docker.\'\""  
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ../user/ansible && ansible all -m command -a \'echo Hello World on Docker.\'\""  
                     
                 }
             }
