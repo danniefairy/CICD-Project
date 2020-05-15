@@ -21,7 +21,6 @@ pipeline {
                     bat "D:\\cygwin64\\bin\\bash --login -c \"cat ansible/ansible.cfg\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ansible --version\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"docker ps\""
-
                     bat "D:\\cygwin64\\bin\\bash --login -c \"export ANSIBLE_DEBUG=1\""    
                     bat "D:\\cygwin64\\bin\\bash --login -c \"cd ansible && ansible all -m command -a \'echo Hello World on Docker.\' -v\""  
                     
