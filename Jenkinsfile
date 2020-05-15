@@ -9,8 +9,11 @@ pipeline {
                 script{
                     StepName = "Install Package"
                     print "[STAGE] ========== ${StepName} =========="
-                    bat "dir"
+                    ansible_cfg = readFile 'ansible/ansible.cfg'
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"mkdir ansible\""
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"echo ${ansible_cfg} > ansible/ansible.cfg\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ls ansible\""
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"cat ansible/ansible.cfg\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ansible --version\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"docker ps\""    
                 }
