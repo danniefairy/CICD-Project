@@ -14,15 +14,16 @@ pipeline {
                     bat "docker run --name server2 -d -p 32782:22 -P chusiang/ansible-managed-node:ubuntu-14.04"
                     bat "dir"
                     bat "dir ansible"
-                    bat "xcopy ansible d:\\cygwin64\\home\\user\\ansible /i /o /y"
+                    bat "xcopy ansible d:\\cygwin64\\home\\SYSTEM\\ansible /i /o /y"
+                    bat "whoami"
 
                     bat "D:\\cygwin64\\bin\\bash --login -c \"pwd\""
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ../user && ls ansible\""
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ../user && cat ansible/ansible.cfg\""
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"ls ansible\""
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"cat ansible/ansible.cfg\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ansible --version\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"docker ps\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"export ANSIBLE_DEBUG=1\""    
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ../user && cd ansible && ansible all -m command -a \'echo Hello World on Docker.\' -vvvv\""  
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ansible && ansible all -m command -a \'echo Hello World on Docker.\' -vvvv\""  
                     
 
                     
