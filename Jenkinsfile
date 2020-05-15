@@ -15,7 +15,7 @@ pipeline {
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ls ansible\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ansible --version\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"docker ps\""    
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"ansible all -m command -a \'echo Hello World on Docker.\'\""  
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ansible && ansible all -m command -a \'echo Hello World on Docker.\'\""  
                     
                 }
             }
