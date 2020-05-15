@@ -5,16 +5,17 @@ pipeline {
             steps {
                 script{
                     print "[STAGE] ========== install package =========="
+                    env.StepName = "Install Package"
                 }
             }
             post{
                 success{
                     print "[INFO] ========== pass install package stage =========="
-                    setBuildStatus("Build succeeded", "SUCCESS", "Install Package");
+                    setBuildStatus("Build succeeded", "SUCCESS", "${env.StepName}");
                 }
                 failure{
                     print "[INFO] ========== fail to pass install package stage =========="
-                    setBuildStatus("Build failed", "FAILURE", "Install Package");
+                    setBuildStatus("Build failed", "FAILURE", "${env.StepName}");
                 }
             }
         }
@@ -22,16 +23,17 @@ pipeline {
             steps {
                 script{
                     print "[STAGE] ========== run test =========="
+                    env.StepName = "Run Test"
                 }
             }
             post{
                 success{
                     print "[INFO] ========== pass run test stage =========="
-                    setBuildStatus("Build succeeded", "SUCCESS", "Run Test");
+                    setBuildStatus("Build failed", "FAILURE", "${env.StepName}");
                 }
                 failure{
                     print "[INFO] ========== fail to pass run test stage =========="
-                    setBuildStatus("Build failed", "FAILURE", "Run Test");
+                    setBuildStatus("Build failed", "FAILURE", "${env.StepName}");
                 }
             }
         }
