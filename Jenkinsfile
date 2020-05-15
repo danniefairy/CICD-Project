@@ -9,7 +9,8 @@ pipeline {
                 script{
                     StepName = "Install Package"
                     print "[STAGE] ========== ${StepName} =========="
-                    pwd        
+                    pwd
+                    ls        
                 }
             }
             post{
