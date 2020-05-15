@@ -16,7 +16,8 @@ pipeline {
                     bat "dir ansible"
                     bat "xcopy ansible d:\\cygwin64\\home\\user\\ansible /i /o /y"
 
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"ls ansible \""
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"pwd\""
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"ls ansible\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"cat ansible/ansible.cfg\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"ansible --version\""
                     bat "D:\\cygwin64\\bin\\bash --login -c \"docker ps\""    
