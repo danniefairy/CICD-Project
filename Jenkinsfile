@@ -9,11 +9,11 @@ pipeline {
                 script{
                     StepName = "Install Package"
                     
-                    bat "mkdir d:\\cygwin64\\home\\user\\Ansible"
-                    bat "xcopy ansible d:\\cygwin64\\home\\user\\Ansible /i /o /y"
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd Ansible && ansible-playbook  playbook.yml\"" 
+                    bat "mkdir d:\\cygwin64\\home\\user\\ansible_dir"
+                    bat "xcopy ansible d:\\cygwin64\\home\\user\\ansible_dir /i /o /y"
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ansible_dir && ansible-playbook  playbook.yml\"" 
 
-                    bat "rmdir d:\\cygwin64\\home\\user\\Ansible /s /q"
+                    bat "rmdir d:\\cygwin64\\home\\user\\ansible_dir /s /q"
                 }
             }
             post{
