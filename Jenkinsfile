@@ -8,7 +8,9 @@ pipeline {
             steps {
                 script{
                     StepName = "Install Package"
-                    print "[STAGE] ========== ${StepName} =========="                    
+                    bat "rmdir d:\\cygwin64\\home\\user\\ansible /s /q"
+                    bat "mkdir d:\\cygwin64\\home\\user\\ansible"
+                    bat "xcopy ansible d:\\cygwin64\\home\\user\\ansible /i /o /y"
                     bat "D:\\cygwin64\\bin\\bash --login -c \"cd ansible && ansible-playbook  playbook.yml\"" 
                 }
             }
@@ -24,8 +26,6 @@ pipeline {
         stage('--run-test--') {
             steps {
                 script{
-                    StepName = "Run Test"
-                    print "[STAGE] ========== ${StepName} =========="
                 }
             }
             post{
