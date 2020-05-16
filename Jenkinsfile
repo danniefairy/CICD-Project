@@ -41,7 +41,7 @@ pipeline {
 }
 
 void setBuildStatus(String message, String state, String taskTitle) {
-    print "[INFO] ========== ${taskTitle} failed =========="
+    print "[INFO] ========== ${taskTitle} ${state} =========="
     step([
         $class: "GitHubCommitStatusSetter",
         reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/danniefairy/CICD-Project"],
