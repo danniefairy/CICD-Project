@@ -4,18 +4,15 @@ pipeline {
         timeout(time: 1, unit: 'HOURS') 
     }
     stages {
-        stage('[Prepare]') {
+        stage('[Prepare ansible files]') {
             steps {
                 script{
-                    StepName = "Install Package"
+                    StepName = "${env.STAGE_NAME}"
                     
                     bat "mkdir d:\\cygwin64\\home\\user\\ansible_dir"
                     bat "xcopy ansible d:\\cygwin64\\home\\user\\ansible_dir /i /o /y"
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ansible_dir && ansible-playbook  playbook.yml\"" 
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ansible_dir\"" 
 
-                    bat "rmdir d:\\cygwin64\\home\\user\\ansible_dir /s /q"
-
-                    print " stage name: ${env.STAGE_NAME}"
                 }
             }
             post{
@@ -27,11 +24,25 @@ pipeline {
                 }
             }
         }
-        stage('--run-test--') {
+        stage('[Deploy and test on stage]') {
             steps {
                 script{
-                    StepName = "Run Test"
-                    print " stage name: ${env.STAGE_NAME}"
+                    StepName = "${env.STAGE_NAME}"
+                }
+            }
+            post{
+                success{
+                    setBuildStatus("Build succeeded", "SUCCESS", "${StepName}");
+                }
+                failure{
+                    setBuildStatus("Build failed", "FAILURE", "${StepName}");
+                }
+            }
+        }
+        stage('[Deploy on production]') {
+            steps {
+                script{
+                    StepName = "${env.STAGE_NAME}"
                 }
             }
             post{
@@ -48,6 +59,11 @@ pipeline {
 
 void setBuildStatus(String message, String state, String taskTitle) {
     print "[INFO] ========== ${taskTitle} ${state} =========="
+    if (state=="FAILURE") {
+        script{
+            bat "rmdir d:\\cygwin64\\home\\user\\ansible_dir /s /q"
+        }
+    }
     step([
         $class: "GitHubCommitStatusSetter",
         reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/danniefairy/CICD-Project"],
