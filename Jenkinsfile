@@ -4,7 +4,7 @@ pipeline {
         timeout(time: 1, unit: 'HOURS') 
     }
     stages {
-        stage('--install-package--') {
+        stage('[Prepare]') {
             steps {
                 script{
                     StepName = "Install Package"
@@ -14,6 +14,8 @@ pipeline {
                     bat "D:\\cygwin64\\bin\\bash --login -c \"cd ansible_dir && ansible-playbook  playbook.yml\"" 
 
                     bat "rmdir d:\\cygwin64\\home\\user\\ansible_dir /s /q"
+
+                    print " stage name: ${env.STAGE_NAME}"
                 }
             }
             post{
@@ -29,6 +31,7 @@ pipeline {
             steps {
                 script{
                     StepName = "Run Test"
+                    print " stage name: ${env.STAGE_NAME}"
                 }
             }
             post{
