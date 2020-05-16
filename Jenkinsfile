@@ -8,6 +8,8 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
+
+                    // Prepare the ansible files.
                     bat "./scripts/prepare_ansible_files.bat"
                 }
             }
@@ -24,6 +26,10 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
+
+                    // Deploy stage container.
+
+                    // Run test.
                 }
             }
             post{
@@ -39,6 +45,8 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
+
+                    // Deploy production container.
                 }
             }
             post{
