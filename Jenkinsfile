@@ -8,8 +8,8 @@ pipeline {
             steps {
                 script{
                     StepName = "Install Package"
-                    print "[STAGE] ========== ${StepName} =========="
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"ansible --version\"" 
+                    print "[STAGE] ========== ${StepName} =========="                    
+                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ansible && ansible-playbook  playbook.yml\"" 
                 }
             }
             post{
