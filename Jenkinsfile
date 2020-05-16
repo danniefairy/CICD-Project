@@ -9,10 +9,7 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
                     
-                    bat "mkdir d:\\cygwin64\\home\\user\\ansible_dir"
-                    bat "xcopy ansible d:\\cygwin64\\home\\user\\ansible_dir /i /o /y"
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"cd ansible_dir\"" 
-
+                    bat "./scripts/prepare_ansible_files.bat"
                 }
             }
             post{
@@ -58,12 +55,15 @@ pipeline {
 }
 
 void setBuildStatus(String message, String state, String taskTitle) {
-    print "[INFO] ========== ${taskTitle} ${state} =========="
+    // Clean up the ansible dir and containers if the pipeline fails.
     if (state=="FAILURE") {
         script{
             bat "rmdir d:\\cygwin64\\home\\user\\ansible_dir /s /q"
+            bat "docker rm -f stage_env prod_env"
         }
     }
+
+    // Send the commit status to github.
     step([
         $class: "GitHubCommitStatusSetter",
         reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/danniefairy/CICD-Project"],
