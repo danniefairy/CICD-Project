@@ -1,0 +1,9 @@
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+    - name: Remove stale containers
+      shell: docker rm -f server1
+    - name: Run container
+      shell: docker run --name server1 -d -P chusiang/ansible-managed-node:ubuntu-14.04
+    - name: Check if container is running
+      shell: docker ps
