@@ -1,3 +1,4 @@
+:: The script will update the ansible_dir in cygwin.
 set ansible_dir="d:\cygwin64\\home\user\ansible_dir"
 if exist %ansible_dir% (
     echo "Remove existed %ansible_dir%."

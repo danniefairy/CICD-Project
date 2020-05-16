@@ -8,7 +8,6 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
-                    
                     bat "./scripts/prepare_ansible_files.bat"
                 }
             }
@@ -58,8 +57,7 @@ void setBuildStatus(String message, String state, String taskTitle) {
     // Clean up the ansible dir and containers if the pipeline fails.
     if (state=="FAILURE") {
         script{
-            bat "rmdir d:\\cygwin64\\home\\user\\ansible_dir /s /q"
-            bat "docker rm -f stage_env prod_env"
+            bat "./scripts/cleanup.bat"
         }
     }
 
