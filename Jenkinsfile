@@ -26,6 +26,7 @@ pipeline {
         stage('--run-test--') {
             steps {
                 script{
+                    StepName = "Run Test"
                 }
             }
             post{
