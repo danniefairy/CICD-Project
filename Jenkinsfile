@@ -14,11 +14,9 @@ pipeline {
             }
             post{
                 success{
-                    print "[INFO] ========== ${StepName} successed =========="
                     setBuildStatus("Build succeeded", "SUCCESS", "${StepName}");
                 }
                 failure{
-                    print "[INFO] ========== ${StepName} failed =========="
                     setBuildStatus("Build failed", "FAILURE", "${StepName}");
                 }
             }
@@ -32,11 +30,9 @@ pipeline {
             }
             post{
                 success{
-                    print "[INFO] ========== ${StepName} successed =========="
                     setBuildStatus("Build succeeded", "SUCCESS", "${StepName}");
                 }
                 failure{
-                    print "[INFO] ========== ${StepName} failed =========="
                     setBuildStatus("Build failed", "FAILURE", "${StepName}");
                 }
             }
@@ -45,11 +41,12 @@ pipeline {
 }
 
 void setBuildStatus(String message, String state, String taskTitle) {
-  step([
-      $class: "GitHubCommitStatusSetter",
-      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/danniefairy/CICD-Project"],
-      contextSource: [$class: "ManuallyEnteredCommitContextSource", context: taskTitle],
-      errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
-      statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
-  ]);
+    print "[INFO] ========== ${taskTitle} failed =========="
+    step([
+        $class: "GitHubCommitStatusSetter",
+        reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/danniefairy/CICD-Project"],
+        contextSource: [$class: "ManuallyEnteredCommitContextSource", context: taskTitle],
+        errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
+        statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
+    ]);
 }
