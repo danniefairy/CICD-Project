@@ -1,5 +1,6 @@
 set ansible_dir="d:\cygwin64\\home\user\ansible_dir"
 if exist %ansible_dir% (
+    echo "Remove existed %ansible_dir%."
     rmdir %ansible_dir% /s/q
 ) 
 md %ansible_dir%
