@@ -12,7 +12,7 @@ pipeline {
                     // Prepare the ansible files.
                     bat "./scripts/prepare_ansible_files.bat"
 
-                    // Prepare the binary file
+                    // Prepare the binary file and _build directory.
                     bat "./scripts/prepare_binary.bat"
                 }
             }
@@ -56,7 +56,7 @@ pipeline {
                     // Prepare the config file
 
                     // Prepare docker-compose file
-                    
+
                     // Deploy production container.
                 }
             }
