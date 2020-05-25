@@ -14,10 +14,6 @@ pipeline {
 
                     // Prepare the binary file
                     bat "./scripts/prepare_binary.bat"
-
-                    // Prepare the config file
-
-                    // Prepare docker-compose file
                 }
             }
             post{
@@ -33,6 +29,10 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
+
+                    // Prepare the config file
+
+                    // Prepare docker-compose file
 
                     // Deploy stage container.
 
@@ -53,6 +53,10 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
 
+                    // Prepare the config file
+
+                    // Prepare docker-compose file
+                    
                     // Deploy production container.
                 }
             }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	config "cicd/config"
 	msg "cicd/message"
 	"fmt"
 	"net/http"
@@ -10,18 +11,13 @@ func hello(w http.ResponseWriter, req *http.Request) {
 	fmt.Fprintf(w, msg.GetMessage())
 }
 
-func headers(w http.ResponseWriter, req *http.Request) {
-
-	for name, headers := range req.Header {
-		for _, h := range headers {
-			fmt.Fprintf(w, "%v: %v\n", name, h)
-		}
-	}
-}
-
 func main() {
-	http.HandleFunc("/hello", hello)
-	http.HandleFunc("/headers", headers)
+	const (
+		configPath = "/etc/server/server.conf"
+	)
+	config := config.GetConfiguration(configPath)
 
-	http.ListenAndServe("localhost:9000", nil)
+	http.HandleFunc("/hello", hello)
+
+	http.ListenAndServe(fmt.Sprintf("localhost:%s", config.Port), nil)
 }

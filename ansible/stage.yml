@@ -1,0 +1,5 @@
+- name: Prepare the config file
+  hosts: 127.0.0.1
+  connection: local
+  roles:
+      - prepare_config
