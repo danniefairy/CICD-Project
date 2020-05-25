@@ -1,5 +1,5 @@
 - name: Prepare the config file
-  hosts: 127.0.0.1
+  hosts: stage
   connection: local
   roles:
       - prepare_config
