@@ -20,11 +20,14 @@
         src: "./templates/server.config.j2"
         dest: "../_build/config/server.config"
 
+    - name: Checking
+      shell: "dir d:\\cygwin64\\home\\SYSTEM\\_build\\config && dir d:\\cygwin64\\home\\SYSTEM\\_build\\bin"
+
     - name: Create docker network for stage containers
       shell: "docker network create --subnet={{ subnet }} stage_network || true"
 
     - name: Deploy stage containers
-      shell: "docker run -dit -v d:\\cygwin64\\home\\SYSTEM\\_build\\configs:/etc/server/config -v d:\\cygwin64\\home\\SYSTEM\\_build\\bin:/etc/bin/server --name {{ item.name }} --net stage_network --ip {{ item.ip }} centos:7 /bin/bash"
+      shell: "docker run -dit -v d:\\cygwin64\\home\\SYSTEM\\_build\\config:/etc/server/config -v d:\\cygwin64\\home\\SYSTEM\\_build\\bin:/etc/bin/server --name {{ item.name }} --net stage_network --ip {{ item.ip }} centos:7 /bin/bash"
       with_items: "{{ container }}"
     
     #- name: Remove stage containers
