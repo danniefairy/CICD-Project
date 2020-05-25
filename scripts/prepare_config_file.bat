@@ -1,7 +1,7 @@
 SET ARG="%1"
 
 if %ARG% == "stage" (
-    D:\cygwin64\bin\bash --login -c "cd ansible && ansible-playbook stage.yml -vvv"
+    D:\cygwin64\bin\bash --login -c "cd ansible && ansible-playbook stage.yml"
 ) else (
-    D:\cygwin64\bin\bash --login -c "cd ansible && ansible-playbook prodction.yml -vvv"
+    D:\cygwin64\bin\bash --login -c "cd ansible && ansible-playbook prodction.yml"
 )

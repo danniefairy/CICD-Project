@@ -1,5 +1,4 @@
-- 
-  name: Prepare the config file
+- name: Prepare the config file
   hosts: localhost
   connection: local
   vars:
