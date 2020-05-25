@@ -1,5 +1,5 @@
 - name: Prepare the config file
-  hosts: localhost
+  hosts: all
   connection: local
   vars:
     port: "9000"
