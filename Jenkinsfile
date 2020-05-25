@@ -31,7 +31,7 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
 
                     // Prepare the config file
-                    bat "D:\\cygwin64\\bin\\bash --login -c \"ansible-playbook ansible/stage.yml -vvv\""
+                    bat "./scripts/prepare_config.bat stage"
 
                     // Prepare docker-compose file
 
