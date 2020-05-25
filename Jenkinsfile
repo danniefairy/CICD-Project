@@ -31,13 +31,9 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
 
                     // Prepare the config file
+                    // Deploy stage container
+                    // Run test
                     bat "./scripts/prepare_config_file.bat stage"
-
-                    // Prepare docker-compose file
-
-                    // Deploy stage container.
-
-                    // Run test.
                 }
             }
             post{
@@ -55,10 +51,7 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
 
                     // Prepare the config file
-
-                    // Prepare docker-compose file
-
-                    // Deploy production container.
+                    // Deploy production container
                 }
             }
             post{

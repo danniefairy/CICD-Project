@@ -3,14 +3,30 @@
   connection: local
   vars:
     port: "9000"
+    subnet: "172.18.0.0/16"
+    container:
+      - ip: "172.18.0.1"
+        name: "server1"
+      - ip: "172.18.0.2"
+        name: "server2"
   tasks:
     - name: Creates directory for configuration file
       file:
         path: ../_build/config
         state: directory
-        
+
     - name: Prepare configuration file
       template:
         src: "./templates/server.config.j2"
         dest: "../_build/config/server.config"
+
+    - name: Create docker network for stage containers
+      shell: "docker network create --subnet={{ subnet }} stage_network"
+
+    - name: Deploy stage containers
+      shell: "docker run -dit -v ../_build/config:/etc/server -v ../_build/bin:/etc/bin/server --name {{ item.name }} --net stage_network --ip {{ item.ip }} centos:7 /etc/bin/server/srv"
+      with_items: container
     
+    #- name: Remove stage containers
+    #  shell: "docker rm -f {{ item.name }}"
+    #  with_items: container
