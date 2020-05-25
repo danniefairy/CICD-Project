@@ -31,7 +31,7 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
 
                     // Prepare the config file
-                    bat "./scripts/prepare_config.bat stage"
+                    bat "./scripts/prepare_config_file.bat stage"
 
                     // Prepare docker-compose file
 
