@@ -1,5 +1,5 @@
 :: The script will update the ansible in cygwin.
-set ansible_dir="d:\cygwin64\\home\user\ansible"
+set ansible_dir="d:\cygwin64\\home\SYSTEM\ansible"
 if exist %ansible_dir% (
     echo "Remove existed %ansible_dir%."
     rmdir %ansible_dir% /s/q
