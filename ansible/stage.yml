@@ -5,9 +5,9 @@
     port: "9000"
     subnet: "172.18.0.0/16"
     container:
-      - ip: "172.18.0.1"
-        name: "server1"
       - ip: "172.18.0.2"
+        name: "server1"
+      - ip: "172.18.0.3"
         name: "server2"
   tasks:
     - name: Creates directory for configuration file
