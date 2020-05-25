@@ -1,9 +1,12 @@
-    - name: Creates directory for configuration file
-      file:
-        path: ../_build/config
-        state: directory
-        
-    - name: Prepare configuration file
-      template:
-        src: "./templates/server.config.j2"
-        dest: "../_build/config/server.config"
+- name: this is a loose task
+  shell: echo 'this is a loose task'
+  
+- name: Creates directory for configuration file
+  file:
+    path: ../_build/config
+    state: directory
+    
+- name: Prepare configuration file
+  template:
+    src: "./templates/server.config.j2"
+    dest: "../_build/config/server.config"
