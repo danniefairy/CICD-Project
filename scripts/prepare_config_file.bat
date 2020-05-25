@@ -1,4 +1,4 @@
-SET ARG=%1
+SET ARG="%1"
 
 if "%ARG%"=="stage"(
     D:\cygwin64\bin\bash --login -c "cd ansible && ansible-playbook stage.yml -vvv"
