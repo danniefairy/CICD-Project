@@ -4,13 +4,19 @@ pipeline {
         timeout(time: 1, unit: 'HOURS') 
     }
     stages {
-        stage('[Prepare ansible files]') {
+        stage('[Prepare component]') {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
 
                     // Prepare the ansible files.
                     bat "./scripts/prepare_ansible_files.bat"
+
+                    // Prepare the binary file
+
+                    // Prepare the config file
+
+                    // Prepare docker-compose file
                 }
             }
             post{
