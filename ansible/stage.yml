@@ -1,7 +1,8 @@
-- name: Prepare the config file
+- 
+  name: Prepare the config file
   hosts: localhost
   connection: local
   vars:
     port: "9000"
   roles:
-     - { role: prepare_config }
+    - prepare_config
