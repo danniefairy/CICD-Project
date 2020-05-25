@@ -1,5 +1,7 @@
 - name: Prepare the config file
-  hosts: stage
+  hosts: 127.0.0.1
   connection: local
+  vars:
+    port: "9000"
   roles:
       - prepare_config

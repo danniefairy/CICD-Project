@@ -1,5 +1,6 @@
-    - name: Remove stale containers
+    - name: Echo test
       shell: echo "I am here!!!"
+
     - name: Creates directory for configuration file
       file:
         path: ../_build/config
