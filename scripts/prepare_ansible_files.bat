@@ -5,5 +5,5 @@ if exist %ansible_dir% (
     rmdir %ansible_dir% /s/q
 ) 
 md %ansible_dir%
-xcopy ansible %ansible_dir% /i /o /y
+xcopy ansible %ansible_dir% /i /o /y /s
 D:\cygwin64\bin\bash --login -c "ls ansible"
