@@ -13,6 +13,7 @@ pipeline {
                     bat "./scripts/prepare_ansible_files.bat"
 
                     // Prepare the binary file
+                    bat "./scripts/prepare_binary.bat"
 
                     // Prepare the config file
 
