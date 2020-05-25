@@ -25,7 +25,7 @@
 
     - name: Deploy stage containers
       shell: "docker run -dit -v ../_build/config:/etc/server -v ../_build/bin:/etc/bin/server --name {{ item.name }} --net stage_network --ip {{ item.ip }} centos:7 /etc/bin/server/srv"
-      with_items: container
+      with_items: "{{ container }}"
     
     #- name: Remove stage containers
     #  shell: "docker rm -f {{ item.name }}"
