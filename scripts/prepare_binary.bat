@@ -12,4 +12,4 @@ go build -o "%bin_path%/srv" ./server/main.go
 popd
 
 echo "Print structure of the directories."
-D:\cygwin64\bin\bash --login -c "tree /f"
+D:\cygwin64\bin\bash --login -c "ls _build"
