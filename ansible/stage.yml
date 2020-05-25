@@ -4,4 +4,4 @@
   vars:
     port: "9000"
   roles:
-    - prepare_config
+     - { role: prepare_config }
