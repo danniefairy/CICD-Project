@@ -13,7 +13,7 @@ func hello(w http.ResponseWriter, req *http.Request) {
 
 func main() {
 	const (
-		configPath = "/etc/server/server.conf"
+		configPath = "/etc/config/server/server.conf"
 	)
 	config := config.GetConfiguration(configPath)
 

@@ -27,7 +27,7 @@
 
     - name: Deploy stage containers
       shell: "docker run -dit 
-        -v d:/cygwin64/home/SYSTEM/_build/config:/etc/server/config 
+        -v d:/cygwin64/home/SYSTEM/_build/config:/etc/config/server 
         -v d:/cygwin64/home/SYSTEM/_build/bin:/etc/bin/server 
         --name {{ item.name }} 
         --net stage_network 
