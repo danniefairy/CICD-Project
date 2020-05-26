@@ -40,10 +40,8 @@
       shell: "pushd ../_build/code &&
         go vet ./... &&
         popd"
-      with_items: container
 
     - name: Run unit test
       shell: "pushd ../_build/code &&
         go test ./... &&
         popd"
-      with_items: container
