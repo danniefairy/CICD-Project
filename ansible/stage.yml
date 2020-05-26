@@ -22,15 +22,15 @@
         src: "./templates/server.conf.j2"
         dest: "../_build/config/server.conf"
 
-    - name: Create docker network for stage containers
-      shell: "docker network create --driver bridge --subnet={{ subnet }} server_network || true"
+    - name: Create docker network for containers
+      shell: "docker network create --driver bridge --subnet={{ subnet }} stage_network || true"
 
     - name: Deploy stage containers
       shell: "docker run -dit 
         -v d:/cygwin64/home/SYSTEM/_build/config:/etc/config/server 
         -v d:/cygwin64/home/SYSTEM/_build/bin:/etc/bin/server 
         --name {{ item.name }} 
-        --net server_network 
+        --net stage_network 
         --ip {{ item.ip }} 
         -p {{ item.port }}:{{ port }}
         centos:7 /etc/bin/server/srv"

@@ -3,21 +3,24 @@
   connection: local
   vars:
     port: "9000"
-    subnet: "172.18.0.0/16"
+    subnet: "172.20.0.0/16"
     container:
-      - ip: "172.18.0.2"
+      - ip: "172.20.0.2"
         name: "server1"
         port: "9011"
-      - ip: "172.18.0.3"
+      - ip: "172.20.0.3"
         name: "server2"
         port: "9012"
   tasks:
+    - name: Create docker network for containers
+      shell: "docker network create --driver bridge --subnet={{ subnet }} production_network || true"
+
     - name: Deploy production containers
       shell: "docker run -dit 
         -v d:/cygwin64/home/SYSTEM/_build/config:/etc/config/server 
         -v d:/cygwin64/home/SYSTEM/_build/bin:/etc/bin/server 
         --name {{ item.name }} 
-        --net server_network 
+        --net production_network 
         --ip {{ item.ip }} 
         -p {{ item.port }}:{{ port }}
         centos:7 /etc/bin/server/srv"
