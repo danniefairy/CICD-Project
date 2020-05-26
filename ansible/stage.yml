@@ -36,9 +36,8 @@
         centos:7 /etc/bin/server/srv"
       with_items: "{{ container }}"
 
-    - name: Run fmt and vet checking
+    - name: Run vet checking
       shell: "pushd ../_build/code &&
-        gofmt -l . &&
         go vet ./... &&
         popd"
       with_items: container
