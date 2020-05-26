@@ -5,7 +5,7 @@ upstream webservers {
 
     # using gateway address
     {% for var in container %}
-    server {{ var.ip }}:{{ var.port }};
+    server {{ gateway }}:{{ var.port }};
     {% endfor %}
 }
 

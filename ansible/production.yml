@@ -4,6 +4,7 @@
   vars:
     port: "9000"
     subnet: "172.20.0.0/16"
+    gateway: "172.20.0.1"
     container:
       - ip: "172.20.0.2"
         name: "server1"
