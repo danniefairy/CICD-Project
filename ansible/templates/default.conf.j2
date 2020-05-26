@@ -1,0 +1,16 @@
+upstream webservers {
+    # default rr
+    #ip_hash;
+    #least_conn;
+
+    # using gateway address
+    {% for var in container %}
+    server {{ gateway }}:{{ var.port }};
+    {% endfor %}
+}
+
+server {
+    location / {
+        proxy_pass http://webservers;
+    }
+}

@@ -4,13 +4,16 @@ pipeline {
         timeout(time: 1, unit: 'HOURS') 
     }
     stages {
-        stage('[Prepare ansible files]') {
+        stage('[Prepare component]') {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
 
                     // Prepare the ansible files.
                     bat "./scripts/prepare_ansible_files.bat"
+
+                    // Prepare the binary file and _build directory.
+                    bat "./scripts/prepare_binary.bat"
                 }
             }
             post{
@@ -27,9 +30,10 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
 
-                    // Deploy stage container.
-
-                    // Run test.
+                    // Prepare the config file
+                    // Deploy stage container
+                    // Run test
+                    bat "./scripts/prepare_config_file.bat stage"
                 }
             }
             post{
@@ -46,7 +50,9 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
 
-                    // Deploy production container.
+                    // Deploy production container
+                    // Deploy load balancer
+                    bat "./scripts/prepare_config_file.bat production"
                 }
             }
             post{
