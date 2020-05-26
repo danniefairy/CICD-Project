@@ -50,7 +50,6 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
 
-                    // Prepare the config file
                     // Deploy production container
                     bat "./scripts/prepare_config_file.bat production"
                 }

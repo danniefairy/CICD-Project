@@ -23,14 +23,14 @@
         dest: "../_build/config/server.conf"
 
     - name: Create docker network for stage containers
-      shell: "docker network create --driver bridge --subnet={{ subnet }} stage_network || true"
+      shell: "docker network create --driver bridge --subnet={{ subnet }} server_network || true"
 
     - name: Deploy stage containers
       shell: "docker run -dit 
         -v d:/cygwin64/home/SYSTEM/_build/config:/etc/config/server 
         -v d:/cygwin64/home/SYSTEM/_build/bin:/etc/bin/server 
         --name {{ item.name }} 
-        --net stage_network 
+        --net server_network 
         --ip {{ item.ip }} 
         -p {{ item.port }}:{{ port }}
         centos:7 /etc/bin/server/srv"
@@ -45,6 +45,4 @@
       shell: "echo \"pass\""
 
     - name: Clean up
-      shell: "docker ps --filter name=server* -aq | xargs docker stop | xargs docker rm &&
-        rmdir d:/cygwin64/home/SYSTEM/ansible /s /q
-        rmdir d:/cygwin64/home/SYSTEM/_build /s /q"
+      shell: "docker ps --filter name=server* -aq | xargs docker stop | xargs docker rm"
