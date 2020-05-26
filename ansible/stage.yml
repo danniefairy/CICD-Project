@@ -35,7 +35,14 @@
         -p {{ item.port }}:{{ port }}
         centos:7 /etc/bin/server/srv"
       with_items: "{{ container }}"
-    
+
+    - name: Run fmt and vet checking
+      shell: "pushd ../_build/code &&
+        gofmt -l . &&
+        go vet ./... &&
+        popd"
+      with_items: container
+
     - name: Run unit test
       shell: "pushd ../_build/code &&
         go test ./... &&
