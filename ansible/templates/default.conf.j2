@@ -1,0 +1,22 @@
+upstream webservers {
+    # default rr
+    #ip_hash;
+    #least_conn;
+
+    # using gateway address
+    {% for var in container %}
+        server {{ var.ip }}:{{ var.port }};
+    {% endfor %}
+}
+
+
+
+server {
+    listen       80;
+    server_name  localhost;
+
+    location / {
+        proxy_pass http://webservers;
+        proxy_set_header  X-Real-IP  $remote_addr;
+    }
+}

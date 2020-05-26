@@ -11,6 +11,9 @@
       - ip: "172.20.0.3"
         name: "server2"
         port: "9012"
+    nginx:
+      port: "10000"
+      name: "load_balancer"
   tasks:
     - name: Create docker network for containers
       shell: "docker network create --driver bridge --subnet={{ subnet }} production_network || true"
@@ -25,3 +28,20 @@
         -p {{ item.port }}:{{ port }}
         centos:7 /etc/bin/server/srv"
       with_items: "{{ container }}"
+
+    - name: Creates directory for nginx configuration file
+      file:
+        path: ../_build/nginx/conf.d
+        state: directory
+
+    - name: Prepare nginx configuration file
+      template:
+        src: "./templates/default.conf.j2"
+        dest: "../_build/nginx/conf.d/default.conf"
+
+    - name: Deploy load balancer container
+      shell: "docker run -dit 
+        -v d:/cygwin64/home/SYSTEM/_build/nginx/conf.d:/etc/nginx/conf.d
+        --name {{ nginx.name }} 
+        -p {{ nginx.port }}:80
+        nginx:latest"
