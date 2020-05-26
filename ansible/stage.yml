@@ -33,7 +33,8 @@
         --net stage_network 
         --ip {{ item.ip }} 
         -p {{ item.port }}:{{ port }}
-        centos:7 /etc/bin/server/srv"
+        centos:7 /bin/bash"
+        #centos:7 /etc/bin/server/srv"
       with_items: "{{ container }}"
     
     #- name: Remove stage containers
