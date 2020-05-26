@@ -5,16 +5,13 @@ upstream webservers {
 
     # using gateway address
     {% for var in container %}
-        server {{ var.ip }}:{{ var.port }};
+    server {{ var.ip }}:{{ var.port }};
     {% endfor %}
 }
 
 
 
 server {
-    listen       80;
-    server_name  localhost;
-
     location / {
         proxy_pass http://webservers;
     }
