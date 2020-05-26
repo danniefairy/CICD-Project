@@ -9,8 +9,6 @@ upstream webservers {
     {% endfor %}
 }
 
-
-
 server {
     location / {
         proxy_pass http://webservers;

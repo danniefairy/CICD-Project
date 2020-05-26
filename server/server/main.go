@@ -17,7 +17,7 @@ func main() {
 	)
 	config := config.GetConfiguration(configPath)
 
-	http.HandleFunc("/hello", hello)
+	http.HandleFunc("/", hello)
 
 	http.ListenAndServe(fmt.Sprintf("0.0.0.0:%s", config.Port), nil)
 }
