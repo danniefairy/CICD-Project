@@ -30,8 +30,6 @@
         -v d:/cygwin64/home/SYSTEM/_build/config:/etc/server/config 
         -v d:/cygwin64/home/SYSTEM/_build/bin:/etc/bin/server 
         --name {{ item.name }} 
-        --net stage_network 
-        --ip {{ item.ip }} 
         -p {{ item.port }}:{{ port }}
         centos:7 /etc/bin/server/srv"
       with_items: "{{ container }}"
