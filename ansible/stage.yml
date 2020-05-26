@@ -23,7 +23,7 @@
         dest: "../_build/config/server.config"
 
     - name: Create docker network for stage containers
-      shell: "docker network create --subnet={{ subnet }} stage_network || true"
+      shell: "docker network create --driver bridge --subnet={{ subnet }} stage_network || true"
 
     - name: Deploy stage containers
       shell: "docker run -dit 
