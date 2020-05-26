@@ -1,0 +1,37 @@
+- name: Prepare the config file
+  hosts: localhost
+  connection: local
+  vars:
+    port: "9000"
+    subnet: "172.18.0.0/16"
+    container:
+      - ip: "172.18.0.2"
+        name: "server1"
+        port: "9011"
+      - ip: "172.18.0.3"
+        name: "server2"
+        port: "9012"
+  tasks:
+    - name: Creates directory for configuration file
+      file:
+        path: ../_build/config
+        state: directory
+
+    - name: Prepare configuration file
+      template:
+        src: "./templates/server.conf.j2"
+        dest: "../_build/config/server.conf"
+
+    - name: Create docker network for production containers
+      shell: "docker network create --driver bridge --subnet={{ subnet }} prod_network || true"
+
+    - name: Deploy production containers
+      shell: "docker run -dit 
+        -v d:/cygwin64/home/SYSTEM/_build/config:/etc/config/server 
+        -v d:/cygwin64/home/SYSTEM/_build/bin:/etc/bin/server 
+        --name {{ item.name }} 
+        --net stage_network 
+        --ip {{ item.ip }} 
+        -p {{ item.port }}:{{ port }}
+        centos:7 /etc/bin/server/srv"
+      with_items: "{{ container }}"

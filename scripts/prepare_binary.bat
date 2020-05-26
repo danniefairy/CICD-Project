@@ -13,6 +13,9 @@ set GOOS=linux
 go build -o "%bin_path%/srv" ./server/main.go 
 popd
 
+:: Create functional test binary and move it to temp directory
+:: pass
+
 :: Move golang code to temp directory.
 set code_path="d:\cygwin64\\home\SYSTEM\_build\code"
 if exist %code_path% (
