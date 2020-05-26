@@ -43,3 +43,6 @@
 
     - name: Run functional test
       shell: "echo \"pass\""
+
+    - name: Clean up
+      shell: "docker ps --filter name=server* -aq | xargs docker stop | xargs docker rm"
