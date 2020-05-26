@@ -51,6 +51,7 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
 
                     // Deploy production container
+                    // Deploy load balancer
                     bat "./scripts/prepare_config_file.bat production"
                 }
             }
