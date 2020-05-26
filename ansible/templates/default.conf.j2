@@ -17,6 +17,5 @@ server {
 
     location / {
         proxy_pass http://webservers;
-        proxy_set_header  X-Real-IP  $remote_addr;
     }
 }
