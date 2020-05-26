@@ -19,5 +19,5 @@ func main() {
 
 	http.HandleFunc("/hello", hello)
 
-	http.ListenAndServe(fmt.Sprintf("localhost:%s", config.Port), nil)
+	http.ListenAndServe(fmt.Sprintf("0.0.0.0:%s", config.Port), nil)
 }
