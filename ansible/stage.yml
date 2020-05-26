@@ -7,8 +7,10 @@
     container:
       - ip: "172.18.0.2"
         name: "server1"
+        port: "9011"
       - ip: "172.18.0.3"
         name: "server2"
+        port: "9012"
   tasks:
     - name: Creates directory for configuration file
       file:
@@ -30,7 +32,7 @@
         --name {{ item.name }} 
         --net stage_network 
         --ip {{ item.ip }} 
-        -p {{ port }}:{{ port }}
+        -p {{ item.port }}:{{ port }}
         centos:7 /etc/bin/server/srv"
       with_items: "{{ container }}"
     
