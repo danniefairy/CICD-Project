@@ -13,7 +13,7 @@
         port: "9012"
     nginx:
       port: "10000"
-      name: "load_balancer"
+      name: "server_lb"
   tasks:
     - name: Create docker network for containers
       shell: "docker network create --driver bridge --subnet={{ subnet }} production_network || true"
