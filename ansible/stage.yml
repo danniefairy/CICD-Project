@@ -38,6 +38,7 @@
 
     - name: Run vet checking
       shell: "pushd ../_build/code &&
+        ls &&
         go vet ./... &&
         popd"
 
